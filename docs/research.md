@@ -26,8 +26,12 @@ Source: [Agensi Security & Trust](https://www.agensi.io/security).
 
 ## Dependency and runtime decisions
 
-`npm view` on 2026-10-19 returned `yaml` 2.9.1, `zod` 4.6.7, `esbuild` 0.28.2, `typescript` 7.0.2, `tsx` 4.23.15, `fast-check` 4.10.2, and `@types/node` 26.6.5. These exact versions are used in `package.json` and the lockfile. YAML parsing uses the `yaml` document API with custom tags disabled. The published runtime is a bundled `.mjs` with no external imports.
+`npm view` on 2026-10-19 returned `yaml` 2.9.1, `zod` 4.6.7, `esbuild` 0.28.2, `typescript` 7.0.2, `tsx` 4.23.15, `fast-check` 4.10.2, and `@types/node` 26.6.5. ESLint is `10.13.0` and the TypeScript ESLint packages are `8.72.0`. YAML parsing uses the `yaml` document API with custom tags disabled. The published runtime is a bundled `.mjs` with no external imports.
+
+TypeScript is pinned to `6.0.3` instead of the `7.0.2` release. The 7.x package is the native compiler: `require('typescript')` no longer exposes `createSourceFile` or `createProgram`, and `@typescript-eslint/parser@8.72.0` declares a peer range of `typescript >=4.8.4 <6.1.0`. Installing the parser against 7.0.2 fails resolution, so linting the TypeScript sources requires the last release that still ships the JavaScript compiler API.
+
+The test runner of Node 22 and 24 supports `--experimental-test-coverage` with the `--test-coverage-lines` threshold and glob patterns for test files, so coverage needs no extra dependency and the same command works on all three operating systems.
 
 ## Out of scope / not verified
 
-No marketplace pricing or current competing listings were verified; the suggested US$9 is omitted from claims and retained only as an unverified listing suggestion. Marketplace-specific upload rules and the internals of Agensi's scanner are not public in the cited material. No pricing or approval guarantee is made.
+No marketplace pricing or current competing listings were verified; the suggested US$9 is omitted from claims and retained only as an unverified listing suggestion. Marketplace-specific upload rules and the internals of Agensi's scanner are not public in the cited material. No pricing or approval guarantee is made. The public repository does not exist yet, so no URL is asserted in the product; the URL and the price stay `TODO(verify)` in `LISTING.md`.

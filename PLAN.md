@@ -30,6 +30,12 @@ Severity and profile selection remain metadata-driven. `--strict` promotes warni
 6. Build reproducibly, run checks locally, dogfood the bundled skill, and adjust findings until clean.
 7. Add cross-platform CI, Gitleaks, npm audit, changeset, checksums, and semantic commits by logical unit.
 
+## Status
+
+Delivered: strict TypeScript CLI, bounded context reader, rule registry with a distinct `agensi` selection, text/JSON/SARIF/Markdown output, executable behavioral evals against local fixtures, committed reproducible bundle with schema and checksum, unit and CLI tests with a 90% line-coverage floor, ESLint configuration, cross-platform CI on Linux, macOS, and Windows with Node 22 and 24, secret scanning, package audit, and the dogfooded skill folder.
+
+Still open, both requiring human confirmation before publication: the public repository URL and the marketplace price. Both stay `TODO(verify)` in `LISTING.md`.
+
 ## Safety limits
 
 Read only regular files beneath the resolved target root, cap total files, per-file bytes, total bytes, and depth, and never execute target content. Refuse a target root that is itself a symlink. Do not read through symlinks; report their containment without following them. This preserves the no-outside-read guarantee, at the cost of not inspecting legitimate symlink targets. A `--out` path is the only permitted write.
