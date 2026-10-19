@@ -30,13 +30,13 @@ export function renderReport(r: Report, format: Format): string {
   return `skill-preflight ${r.target} (${r.profile})\n${r.summary.errors} errors · ${r.summary.warnings} warnings · ${r.summary.infos} info\n${r.findings.map(f => `${f.severity.toUpperCase()} ${f.id} ${f.location.file}:${f.location.line} ${f.message}\n  Fix: ${f.suggestion}`).join('\n') || 'No findings.'}\n`;
 }
 
-/** SARIF 2.1.0 payload. No documentation URI is published because the project has no public home yet. */
+/** SARIF 2.1.0 payload. The documentation URI points at the public repository. */
 function sarif(r: Report) {
   return {
     $schema: 'https://json.schemastore.org/sarif-2.1.0.json',
     version: '2.1.0',
     runs: [{
-      tool: { driver: { name: TOOL.name, version: TOOL.version, rules: [...new Map(r.findings.map(f => [f.id, { id: f.id, shortDescription: { text: f.category }, fullDescription: { text: f.message } }])).values()] } },
+      tool: { driver: { name: TOOL.name, version: TOOL.version, informationUri: 'https://github.com/1arley/skill-preflight', rules: [...new Map(r.findings.map(f => [f.id, { id: f.id, shortDescription: { text: f.category }, fullDescription: { text: f.message } }])).values()] } },
       results: r.findings.map(f => ({
         ruleId: f.id,
         level: f.severity === 'error' ? 'error' : f.severity === 'warning' ? 'warning' : 'note',

@@ -34,4 +34,4 @@ The test runner of Node 22 and 24 supports `--experimental-test-coverage` with t
 
 ## Out of scope / not verified
 
-No marketplace pricing or current competing listings were verified; the suggested US$9 is omitted from claims and retained only as an unverified listing suggestion. Marketplace-specific upload rules and the internals of Agensi's scanner are not public in the cited material. No pricing or approval guarantee is made. The public repository does not exist yet, so no URL is asserted in the product; the URL and the price stay `TODO(verify)` in `LISTING.md`.
+No marketplace pricing or current competing listings were verified; the suggested US$9 is omitted from claims and retained only as an unverified listing suggestion. Marketplace-specific upload rules and the internals of Agensi's scanner are not public in the cited material. No pricing or approval guarantee is made. The public repository was created with the `gh` CLI at `https://github.com/1arley/skill-preflight`, so the URL is asserted in the product; the price stays `TODO(verify)` in `LISTING.md`.

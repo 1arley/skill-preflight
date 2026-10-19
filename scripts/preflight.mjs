@@ -27455,7 +27455,7 @@ function sarif(r) {
     $schema: "https://json.schemastore.org/sarif-2.1.0.json",
     version: "2.1.0",
     runs: [{
-      tool: { driver: { name: TOOL.name, version: TOOL.version, rules: [...new Map(r.findings.map((f) => [f.id, { id: f.id, shortDescription: { text: f.category }, fullDescription: { text: f.message } }])).values()] } },
+      tool: { driver: { name: TOOL.name, version: TOOL.version, informationUri: "https://github.com/1arley/skill-preflight", rules: [...new Map(r.findings.map((f) => [f.id, { id: f.id, shortDescription: { text: f.category }, fullDescription: { text: f.message } }])).values()] } },
       results: r.findings.map((f) => ({
         ruleId: f.id,
         level: f.severity === "error" ? "error" : f.severity === "warning" ? "warning" : "note",

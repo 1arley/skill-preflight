@@ -12,7 +12,13 @@ node scripts/preflight.mjs /path/to/skill --format json --out report.json
 node scripts/preflight.mjs /path/to/skill --format sarif
 ```
 
-Install the skill into your agent with the skills CLI once the repository has a public URL. That URL is not settled yet, so it is tracked as `TODO(verify)` in [LISTING.md](LISTING.md) and must be confirmed before it is written into any install command. Until then, copy `skills/devtools/skill-preflight` into the directory your agent reads skills from.
+Install the skill into your agent with the skills CLI:
+
+```sh
+npx skills add https://github.com/1arley/skill-preflight --skill skill-preflight
+```
+
+Or copy `skills/devtools/skill-preflight` into the directory your agent reads skills from.
 
 ## Example output
 
@@ -73,4 +79,4 @@ npm run audit:self
 
 `skill-preflight` faz verificações determinísticas e offline em pastas com `SKILL.md`: formato, estrutura, segurança estática, supply chain, documentação, evals e portabilidade. O bundle exige Node.js 22+ e não tem dependências em runtime. Ele não executa os arquivos auditados, não segue symlinks, não faz chamadas de rede ou a modelos e não grava dentro da skill. O relatório vai para stdout, salvo quando `--out` é informado.
 
-O perfil `agensi` roda um conjunto distinto de regras inspirado nas categorias públicas do Agensi; ele é heurístico, não reproduz o scanner privado e não prevê aprovação. `npm run eval` executa o corpus de tarefas comportamentais contra os fixtures locais e falha quando uma asserção falha. A URL pública do repositório ainda não existe: copie `skills/devtools/skill-preflight` para a pasta de skills do seu agente até ela ser confirmada. Para remover, apague o diretório instalado ou use o gerenciador de skills do agente.
+O perfil `agensi` roda um conjunto distinto de regras inspirado nas categorias públicas do Agensi; ele é heurístico, não reproduz o scanner privado e não prevê aprovação. `npm run eval` executa o corpus de tarefas comportamentais contra os fixtures locais e falha quando uma asserção falha. Instale com `npx skills add https://github.com/1arley/skill-preflight --skill skill-preflight`, ou copie `skills/devtools/skill-preflight` para a pasta de skills do seu agente. Para remover, apague o diretório instalado ou use o gerenciador de skills do agente.

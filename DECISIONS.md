@@ -12,7 +12,7 @@
 - **No marketplace price or competitor claim is asserted.** The requested US$9 suggestion was not independently verified and remains `TODO(verify)` before any listing.
 - **Screenshots are deterministic text captures, not fabricated marketplace screenshots.** The repository has no marketplace account or approved publication context.
 - **Qualitative skill quality is appended only by the host agent using `references/rubric.md`.** Scripts do not call an LLM and cannot infer semantic usefulness.
-- **No public repository URL is written into the product yet.** The repository has no public home, so install instructions point at a local copy and the URL stays `TODO(verify)`. SARIF output carries no documentation URI and the JSON Schema uses a URN `$id` for the same reason.
+- **The public repository URL is `https://github.com/1arley/skill-preflight`.** The repository was created with the `gh` CLI, so the install command, the SARIF documentation URI, and the listing can point at it. The marketplace price is still `TODO(verify)`.
 - **Pin TypeScript 6.0.3 instead of 7.0.2.** TypeScript 7 is the native compiler and no longer exposes the JavaScript compiler API that `@typescript-eslint/parser` needs, so linting TypeScript sources would require an unsupported peer combination. Typecheck, lint, and the bundle all work on 6.0.3.
 - **Evals execute assertions against local fixtures.** The behavioral task corpus is bound to fixtures under `test/fixtures` and run by `npm run eval`; trigger positives and negatives stay shape-validated because activation needs a model.
 - **Coverage is measured with the built-in test runner.** `npm test` enforces a 90% line floor over `src/`, so no extra coverage dependency is needed.
