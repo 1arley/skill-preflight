@@ -4,7 +4,7 @@ Deterministic, offline pre-publication checks for folders containing `SKILL.md`.
 
 ## Install and run
 
-The bundled auditor needs Node.js 22 or newer and has no runtime dependencies:
+The auditor needs Node.js 22 or newer and has no runtime dependencies:
 
 ```sh
 node scripts/preflight.mjs /path/to/skill --profile default --format text

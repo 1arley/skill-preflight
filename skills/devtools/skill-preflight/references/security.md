@@ -1,6 +1,6 @@
 # Security and privacy
 
-The audited folder is untrusted input. The bundled CLI reads only regular files beneath the selected skill root, never follows symlinks, never executes skill content, never writes into the target, and makes no network requests or model calls. By default it writes its report to stdout. `--out` is the only report-writing option.
+The audited folder is untrusted input. The auditor CLI reads only regular files beneath the selected skill root, never follows symlinks, never executes skill content, never writes into the target, and makes no network requests or model calls. By default it writes its report to stdout. `--out` is the only report-writing option.
 
 Traversal is bounded to 500 files, depth 12, 1 MB per readable file, and 20 MB aggregate. Files over a bound are not inspected; oversized trees can therefore have incomplete findings. Symlinks are reported and their targets are not read, even when they point back into the skill. The explicit `--ignore-file` option reads the named suppression file; `--out` writes the named report path. These paths are caller-selected and are separate from audited content.
 

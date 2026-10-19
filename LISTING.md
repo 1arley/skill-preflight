@@ -2,7 +2,7 @@
 
 - **Title:** Skill Preflight — Offline Skill Security and Format Audit
 - **Short description:** Audit a `SKILL.md` folder for format, structure, static security, and supply-chain issues before you publish, with a deterministic offline CLI.
-- **Long description:** Publish your skill with the review pass already done. Skill Preflight scans a `SKILL.md` folder for format, structure, static security, and supply-chain issues, then reports stable rule IDs, exact file locations, and actionable fixes. Reports come as text, JSON, Markdown, or SARIF, so you can gate CI on it. The bundled CLI has no runtime dependencies, never executes the audited skill, and never sends its contents anywhere. A separate host-agent rubric reviews activation clarity and examples. Checks are heuristic and do not guarantee marketplace acceptance.
+- **Long description:** Publish your skill with the review pass already done. Skill Preflight scans a `SKILL.md` folder for format, structure, static security, and supply-chain issues, then reports stable rule IDs, exact file locations, and actionable fixes. Reports come as text, JSON, Markdown, or SARIF, so you can gate CI on it. The CLI has no runtime dependencies, never executes the audited skill, and never sends its contents anywhere. A separate host-agent rubric reviews activation clarity and examples. Checks are heuristic and do not guarantee marketplace acceptance.
 - **Tags:** skills, security, developer-tools, audit, supply-chain, offline
 - **Price:** US$7 at launch, US$9 afterwards. Set by the owner on 2026-10-19; competitor pricing and marketplace rules were not independently verified, so re-check both immediately before publishing.
 - **Repository URL:** https://github.com/1arley/skill-preflight
