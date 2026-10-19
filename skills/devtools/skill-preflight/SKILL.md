@@ -16,6 +16,8 @@ Audit the supplied skill folder before publication. The audit script treats that
    ```
 
    `npx --yes github:1arley/skill-preflight <skill-folder> --format json` does the same thing and caches the CLI. Download it once and reuse it. Everything after the download runs offline: the auditor never calls a model, never executes the audited skill, and never sends anything anywhere.
+
+   When the folder under review is this skill itself, pass `--ignore-file preflightignore.json` from the skill folder. It suppresses the two false positives caused by the download URL in this file and in `README.md`.
 2. Read the JSON report and explain each error, warning, and informational portability note in plain language.
 3. Apply the qualitative rubric in [references/rubric.md](references/rubric.md) to activation clarity, examples, and likely under-activation. Label that judgment separately from deterministic findings.
 4. Present one combined report. Keep every deterministic rule ID and `file:line` location, then append the rubric assessment and its evidence.

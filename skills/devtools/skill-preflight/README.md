@@ -4,7 +4,7 @@ Deterministic, offline pre-publication checks for a folder that contains `SKILL.
 
 ## Install
 
-Copy this folder into the directory your agent reads skills from. The bundled auditor needs Node.js 22 or newer and has no runtime dependencies.
+Copy this folder into the directory your agent reads skills from. The auditor needs Node.js 22 or newer and has no runtime dependencies.
 
 ## Use
 
@@ -23,6 +23,8 @@ node /tmp/skill-preflight.mjs ./path/to/skill --profile default --format text
 `npx --yes github:1arley/skill-preflight ./path/to/skill --format text` is the one-command alternative.
 
 Every finding carries a stable rule ID, the exact file and line, and a suggested fix. Reports are available as `text`, `json`, `sarif`, and `md`.
+
+Auditing this skill folder itself needs `--ignore-file preflightignore.json`, run from that folder. The suppression covers the two false positives that the download URL above triggers.
 
 ## Privacy
 
