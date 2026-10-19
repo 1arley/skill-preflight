@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "note": "Behavioral task corpus. Fixture paths are relative to the repository root. The corpus is executed by `npm run eval` against local fixtures; trigger queries in trigger.json need a model and are validated for shape only.",
+  "tasks": [
+    {"id":"frontmatter-mismatch","fixture":"bad/name-mismatch","input":"Audit a folder whose name differs from SKILL.md name.","assertions":[{"contains":["FM-002","SKILL.md:2"]}]},
+    {"id":"missing-description","fixture":"bad/missing-description","input":"Check a skill with no description.","assertions":[{"contains":["FM-003"]}]},
+    {"id":"broken-link","fixture":"bad/broken-link","input":"Find a broken relative README link.","assertions":[{"contains":["ST-003"]}]},
+    {"id":"remote-fetch","fixture":"bad/network","input":"Review a script that calls fetch.","assertions":[{"contains":["SEC-001","scripts/run.mjs:1"]}]},
+    {"id":"secret-literal","fixture":"bad/secret","input":"Review a script with a known token prefix.","assertions":[{"contains":["SEC-008"]}]},
+    {"id":"lifecycle-hook","fixture":"bad/lifecycle","input":"Check package.json with postinstall.","assertions":[{"contains":["SUP-001"]}]},
+    {"id":"agensi-scope","fixture":"bad/network","profile":"agensi","input":"Audit the same folder with the agensi profile.","assertions":[{"contains":["SEC-001"]},{"notContains":["DOC-001","FM-004"]}]},
+    {"id":"valid-skill","fixture":"good/sample-skill","input":"Audit a complete offline skill with portable frontmatter.","assertions":[{"contains":["No findings"]}]},
+    {"id":"malicious-symlink","fixture":"bad/symlink","setup":"symlink-outside","input":"Audit a folder with a symlink targeting outside.","assertions":[{"contains":["ST-007"]}]}
+  ]
+}

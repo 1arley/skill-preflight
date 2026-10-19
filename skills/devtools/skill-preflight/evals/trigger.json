@@ -1,0 +1,26 @@
+{
+  "shouldTrigger": [
+    "audit this skill before I publish it",
+    "check my SKILL.md for format and security problems",
+    "is this skill safe to publish?",
+    "lint this skill folder",
+    "prepare this skill for a marketplace listing",
+    "review the security of my agent skill",
+    "run preflight on this skill package",
+    "find broken references in this skill",
+    "check whether my skill description will activate",
+    "validate this skill before sharing it internally"
+  ],
+  "shouldNotTrigger": [
+    "audit this TypeScript application for vulnerabilities",
+    "lint my React project",
+    "write a new SKILL.md for me",
+    "publish this npm package",
+    "review this marketplace listing copy",
+    "check my README links only",
+    "is this MCP server safe?",
+    "scan my whole home directory for secrets",
+    "help me create an agent prompt",
+    "explain the SKILL.md format specification"
+  ]
+}

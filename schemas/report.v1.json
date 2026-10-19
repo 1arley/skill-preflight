@@ -1,0 +1,135 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "schemaVersion": {
+      "type": "string",
+      "const": "1.0.0"
+    },
+    "tool": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "const": "skill-preflight"
+        },
+        "version": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "version"
+      ],
+      "additionalProperties": false
+    },
+    "target": {
+      "type": "string"
+    },
+    "profile": {
+      "type": "string",
+      "enum": [
+        "default",
+        "strict",
+        "agensi"
+      ]
+    },
+    "generatedAt": {
+      "type": "string"
+    },
+    "summary": {
+      "type": "object",
+      "properties": {
+        "errors": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "warnings": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "infos": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        }
+      },
+      "required": [
+        "errors",
+        "warnings",
+        "infos"
+      ],
+      "additionalProperties": false
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Z]+-\\d{3}$"
+          },
+          "severity": {
+            "type": "string",
+            "enum": [
+              "error",
+              "warning",
+              "info"
+            ]
+          },
+          "category": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          },
+          "location": {
+            "type": "object",
+            "properties": {
+              "file": {
+                "type": "string"
+              },
+              "line": {
+                "type": "integer",
+                "exclusiveMinimum": 0,
+                "maximum": 9007199254740991
+              }
+            },
+            "required": [
+              "file",
+              "line"
+            ],
+            "additionalProperties": false
+          },
+          "suggestion": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "severity",
+          "category",
+          "message",
+          "location",
+          "suggestion"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "tool",
+    "target",
+    "profile",
+    "generatedAt",
+    "summary",
+    "findings"
+  ],
+  "additionalProperties": false,
+  "$id": "urn:skill-preflight:schema:report:1.0.0",
+  "title": "skill-preflight report v1"
+}
