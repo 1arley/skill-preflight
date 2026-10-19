@@ -1,0 +1,8 @@
+title = "skill-preflight gitleaks configuration"
+
+[extend]
+useDefault = true
+
+[allowlist]
+description = "Test fixtures hold deliberate secret-shaped literals and a fake token."
+paths = ['''^test/fixtures/''']
