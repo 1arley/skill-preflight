@@ -34,7 +34,7 @@ Severity and profile selection remain metadata-driven. `--strict` promotes warni
 
 Delivered: strict TypeScript CLI, bounded context reader, rule registry with a distinct `agensi` selection, text/JSON/SARIF/Markdown output, executable behavioral evals against local fixtures, committed reproducible bundle with schema and checksum, unit and CLI tests with a 90% line-coverage floor, ESLint configuration, cross-platform CI on Linux, macOS, and Windows with Node 22 and 24, secret scanning, package audit, and the dogfooded skill folder.
 
-Still open, both requiring human confirmation before publication: the public repository URL and the marketplace price. Both stay `TODO(verify)` in `LISTING.md`.
+Still open before publication: the marketplace screenshots, which need a marketplace account, and a re-check of marketplace pricing rules, since the owner set the price at US$7 at launch and US$9 afterwards without independent competitor verification.
 
 ## Safety limits
 
