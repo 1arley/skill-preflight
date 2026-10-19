@@ -6921,14 +6921,14 @@ var require_parser = __commonJS({
             case "scalar":
             case "single-quoted-scalar":
             case "double-quoted-scalar": {
-              const fs3 = this.flowScalar(this.type);
+              const fs4 = this.flowScalar(this.type);
               if (atNextItem || it.value) {
-                map2.items.push({ start, key: fs3, sep: [] });
+                map2.items.push({ start, key: fs4, sep: [] });
                 this.onKeyLine = true;
               } else if (it.sep) {
-                this.stack.push(fs3);
+                this.stack.push(fs4);
               } else {
-                Object.assign(it, { key: fs3, sep: [] });
+                Object.assign(it, { key: fs4, sep: [] });
                 this.onKeyLine = true;
               }
               return;
@@ -7056,13 +7056,13 @@ var require_parser = __commonJS({
             case "scalar":
             case "single-quoted-scalar":
             case "double-quoted-scalar": {
-              const fs3 = this.flowScalar(this.type);
+              const fs4 = this.flowScalar(this.type);
               if (!it || it.value)
-                fc.items.push({ start: [], key: fs3, sep: [] });
+                fc.items.push({ start: [], key: fs4, sep: [] });
               else if (it.sep)
-                this.stack.push(fs3);
+                this.stack.push(fs4);
               else
-                Object.assign(it, { key: fs3, sep: [] });
+                Object.assign(it, { key: fs4, sep: [] });
               return;
             }
             case "flow-map-end":
@@ -7371,7 +7371,7 @@ var require_dist = __commonJS({
 });
 
 // src/cli.ts
-import fs2 from "node:fs";
+import fs3 from "node:fs";
 
 // src/context.ts
 var import_yaml = __toESM(require_dist(), 1);
@@ -7446,10 +7446,19 @@ function parseJson(s) {
 }
 
 // src/entry.ts
-import { pathToFileURL } from "node:url";
+import fs2 from "node:fs";
+import { fileURLToPath } from "node:url";
+var real = (p) => {
+  try {
+    return fs2.realpathSync(p);
+  } catch {
+    return p;
+  }
+};
 var isEntry = (metaUrl, argv = process.argv) => {
   const entry = argv[1];
-  return !!entry && metaUrl === pathToFileURL(entry).href;
+  if (!entry) return false;
+  return real(fileURLToPath(metaUrl)) === real(entry);
 };
 
 // node_modules/zod/v4/classic/external.js
@@ -27562,7 +27571,7 @@ Profiles: ${profiles}`);
     const rules2 = selectRules(args.profile).filter((r) => (!args.only.length || args.only.includes(r.meta.id)) && !args.skip.includes(r.meta.id));
     let findings = rules2.flatMap((r) => r.check(ctx));
     if (args.ignore) {
-      const raw = JSON.parse(fs2.readFileSync(args.ignore, "utf8"));
+      const raw = JSON.parse(fs3.readFileSync(args.ignore, "utf8"));
       if (!Array.isArray(raw)) throw new Error("Ignore file must be a JSON array.");
       for (const x of raw) {
         if (!x || typeof x !== "object") throw new Error("Ignore entries must be objects.");
@@ -27573,7 +27582,7 @@ Profiles: ${profiles}`);
     }
     const report = buildReport(ctx, findings);
     const output2 = renderReport(report, args.format);
-    if (args.out) fs2.writeFileSync(args.out, output2);
+    if (args.out) fs3.writeFileSync(args.out, output2);
     else process.stdout.write(output2);
     if (report.summary.errors) return 2;
     if ((args.strict || args.profile === "strict") && report.summary.warnings) return 1;
