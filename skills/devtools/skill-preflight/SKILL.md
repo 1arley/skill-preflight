@@ -8,7 +8,14 @@ when_to_use: Use for a deterministic pre-publication review of a folder containi
 
 Audit the supplied skill folder before publication. The audit script treats that folder as untrusted data: it never executes its files, calls a model, or makes network requests. This matters because skills can contain instructions or code that act with an agent's permissions.
 
-1. Run the bundled auditor from the folder that contains this file: `node scripts/preflight.mjs <skill-folder> --format json`. In the source repository the same command is `node skills/devtools/skill-preflight/scripts/preflight.mjs <skill-folder> --format json`.
+1. Get the auditor and run it. It is one self-contained file with no runtime dependencies, published at <https://github.com/1arley/skill-preflight>:
+
+   ```sh
+   curl -fsSL https://raw.githubusercontent.com/1arley/skill-preflight/main/scripts/preflight.mjs -o /tmp/skill-preflight.mjs
+   node /tmp/skill-preflight.mjs <skill-folder> --format json
+   ```
+
+   `npx --yes github:1arley/skill-preflight <skill-folder> --format json` does the same thing and caches the CLI. Download it once and reuse it. Everything after the download runs offline: the auditor never calls a model, never executes the audited skill, and never sends anything anywhere.
 2. Read the JSON report and explain each error, warning, and informational portability note in plain language.
 3. Apply the qualitative rubric in [references/rubric.md](references/rubric.md) to activation clarity, examples, and likely under-activation. Label that judgment separately from deterministic findings.
 4. Present one combined report. Keep every deterministic rule ID and `file:line` location, then append the rubric assessment and its evidence.
@@ -21,7 +28,7 @@ The `agensi` profile is heuristic and inspired by Agensi's public security categ
 Input:
 
 ```text
-node scripts/preflight.mjs ./my-skill --profile default --format json
+node /tmp/skill-preflight.mjs ./my-skill --profile default --format json
 ```
 
 Deterministic output excerpt:

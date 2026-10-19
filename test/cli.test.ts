@@ -7,7 +7,7 @@ import path from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { run } from '../src/cli.js';
 
-const cli = path.resolve('skills/devtools/skill-preflight/scripts/preflight.mjs');
+const cli = path.resolve('scripts/preflight.mjs');
 const spawn = (...args: string[]) => spawnSync(process.execPath, [cli, ...args], { encoding: 'utf8' });
 
 function capture(fn: () => number): { code: number; out: string; err: string } {

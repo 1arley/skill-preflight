@@ -8,11 +8,19 @@ Copy this folder into the directory your agent reads skills from. The bundled au
 
 ## Use
 
-Run the auditor on the folder you want reviewed:
+Download the auditor once. It is a single self-contained file with no runtime dependencies:
 
 ```sh
-node scripts/preflight.mjs ./path/to/skill --profile default --format text
+curl -fsSL https://raw.githubusercontent.com/1arley/skill-preflight/main/scripts/preflight.mjs -o /tmp/skill-preflight.mjs
 ```
+
+Then run it on the folder you want reviewed:
+
+```sh
+node /tmp/skill-preflight.mjs ./path/to/skill --profile default --format text
+```
+
+`npx --yes github:1arley/skill-preflight ./path/to/skill --format text` is the one-command alternative.
 
 Every finding carries a stable rule ID, the exact file and line, and a suggested fix. Reports are available as `text`, `json`, `sarif`, and `md`.
 

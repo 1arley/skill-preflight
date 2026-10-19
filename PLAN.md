@@ -4,7 +4,7 @@
 
 - `src/` contains the strict TypeScript CLI, bounded filesystem reader, Zod report contract, and pure rule modules.
 - The CLI parses only local inputs, never executes audited files, and writes only stdout or an explicitly requested `--out` report. It produces stable findings in text, JSON, SARIF 2.1.0, or Markdown.
-- `skills/devtools/skill-preflight/scripts/preflight.mjs` is a committed esbuild bundle with no runtime dependencies. It lives inside the skill folder so that folder is the shippable unit for every distribution channel. `npm run build` rebuilds it; CI verifies a clean diff and the SHA256 manifest.
+- `scripts/preflight.mjs` is a committed esbuild bundle with no runtime dependencies. It stays outside the skill folder so the published package stays text-only and free of self-matching false positives. `npm run build` rebuilds it; CI verifies a clean diff and the SHA256 manifest.
 - The qualitative rubric is for the host agent only. The deterministic script never calls a model or network.
 - Rules are grouped as FM, ST, SEC, SUP, DOC, EVAL, and PORT. The registry drives `--explain` and generated `references/rules.md`; tests enforce metadata completeness and positive/negative examples.
 

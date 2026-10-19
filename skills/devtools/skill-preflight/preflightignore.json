@@ -1,12 +1,22 @@
 [
   {
-    "id": "ST-006",
-    "file": "scripts/preflight.mjs",
-    "reason": "The bundled auditor is a committed, inspectable build of this repository's source code, not an opaque payload."
+    "id": "SEC-001",
+    "file": "SKILL.md",
+    "reason": "The install step documents a one-time download of the auditor from the public repository. The auditor itself makes no network calls."
   },
   {
-    "id": "ST-005",
-    "file": "scripts/preflight.mjs",
-    "reason": "The auditor is invoked as `node scripts/preflight.mjs`, so the executable bit is not required; Windows checkouts cannot carry it."
+    "id": "SEC-013",
+    "file": "SKILL.md",
+    "reason": "The matched literal is the URL path of the auditor download, not a secret."
+  },
+  {
+    "id": "SEC-001",
+    "file": "README.md",
+    "reason": "The install step documents a one-time download of the auditor from the public repository. The auditor itself makes no network calls."
+  },
+  {
+    "id": "SEC-013",
+    "file": "README.md",
+    "reason": "The matched literal is the URL path of the auditor download, not a secret."
   }
 ]
