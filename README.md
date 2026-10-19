@@ -7,9 +7,9 @@ Deterministic, offline pre-publication checks for folders containing `SKILL.md`.
 The bundled auditor needs Node.js 22 or newer and has no runtime dependencies:
 
 ```sh
-node scripts/preflight.mjs /path/to/skill --profile default --format text
-node scripts/preflight.mjs /path/to/skill --format json --out report.json
-node scripts/preflight.mjs /path/to/skill --format sarif
+node skills/devtools/skill-preflight/scripts/preflight.mjs /path/to/skill --profile default --format text
+node skills/devtools/skill-preflight/scripts/preflight.mjs /path/to/skill --format json --out report.json
+node skills/devtools/skill-preflight/scripts/preflight.mjs /path/to/skill --format sarif
 ```
 
 Install the skill into your agent with the skills CLI:

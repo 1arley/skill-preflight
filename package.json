@@ -7,7 +7,6 @@
     "node": ">=22"
   },
   "files": [
-    "scripts/preflight.mjs",
     "skills/",
     "schemas/",
     "README.md",
@@ -20,11 +19,11 @@
     "lint": "eslint src test eslint.config.js",
     "test": "node --import tsx --test --experimental-test-coverage --test-coverage-include=\"src/**\" --test-coverage-exclude=\"test/**\" --test-coverage-lines=90 \"test/*.test.ts\"",
     "schema": "tsx src/schema.ts",
-    "build": "esbuild src/cli.ts --bundle --platform=node --format=esm --target=node22 --banner:js=\"import { createRequire } from 'node:module'; const require = createRequire(import.meta.url);\" --outfile=scripts/preflight.mjs && npm run schema && npm run catalog && tsx src/checksum.ts",
+    "build": "esbuild src/cli.ts --bundle --platform=node --format=esm --target=node22 --banner:js=\"import { createRequire } from 'node:module'; const require = createRequire(import.meta.url);\" --outfile=skills/devtools/skill-preflight/scripts/preflight.mjs && npm run schema && npm run catalog && tsx src/checksum.ts",
     "catalog": "tsx src/catalog.ts",
-    "check:bundle": "npm run build && git diff --exit-code -- scripts/preflight.mjs schemas/report.v1.json skills/devtools/skill-preflight/references/rules.md SHA256SUMS",
+    "check:bundle": "npm run build && git diff --exit-code -- skills/devtools/skill-preflight/scripts/preflight.mjs schemas/report.v1.json skills/devtools/skill-preflight/references/rules.md SHA256SUMS",
     "eval": "tsx src/eval.ts",
-    "audit:self": "node scripts/preflight.mjs skills/devtools/skill-preflight --profile default --strict --format text"
+    "audit:self": "node skills/devtools/skill-preflight/scripts/preflight.mjs skills/devtools/skill-preflight --profile default --strict --ignore-file skills/devtools/skill-preflight/.preflightignore --format text"
   },
   "dependencies": {
     "yaml": "2.9.1",

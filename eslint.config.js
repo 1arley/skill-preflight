@@ -1,7 +1,7 @@
 import tseslint from 'typescript-eslint';
 
 export default tseslint.config(
-  { ignores: ['scripts/preflight.mjs', 'graphify-out/**', 'node_modules/**', 'coverage/**', 'test/fixtures/**'] },
+  { ignores: ['skills/devtools/skill-preflight/scripts/preflight.mjs', 'graphify-out/**', 'node_modules/**', 'coverage/**', 'test/fixtures/**'] },
   ...tseslint.configs.recommended,
   {
     files: ['src/**/*.ts', 'test/**/*.ts'],
