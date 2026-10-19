@@ -10,6 +10,7 @@
     {"id":"lifecycle-hook","fixture":"bad/lifecycle","input":"Check package.json with postinstall.","assertions":[{"contains":["SUP-001"]}]},
     {"id":"agensi-scope","fixture":"bad/network","profile":"agensi","input":"Audit the same folder with the agensi profile.","assertions":[{"contains":["SEC-001"]},{"notContains":["DOC-001","FM-004"]}]},
     {"id":"valid-skill","fixture":"good/sample-skill","input":"Audit a complete offline skill with portable frontmatter.","assertions":[{"contains":["No findings"]}]},
-    {"id":"malicious-symlink","fixture":"bad/symlink","setup":"symlink-outside","input":"Audit a folder with a symlink targeting outside.","assertions":[{"contains":["ST-007"]}]}
+    {"id":"malicious-symlink","fixture":"bad/symlink","setup":"symlink-outside","input":"Audit a folder with a symlink targeting outside.","assertions":[{"contains":["ST-007"]}]},
+    {"id":"sarif-report","fixture":"bad/network","format":"sarif","input":"Produce a SARIF report for code scanning.","assertions":[{"contains":["\"version\": \"2.1.0\"","\"ruleId\": \"SEC-001\"","\"startLine\": 1"]}]}
   ]
 }

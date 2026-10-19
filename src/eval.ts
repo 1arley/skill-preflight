@@ -7,7 +7,7 @@ import { selectRules } from './rules.js';
 import { buildReport, renderReport } from './report.js';
 
 export type EvalAssertion = { contains?: string[]; notContains?: string[] };
-export type EvalTask = { id: string; input: string; fixture: string; profile?: 'default'|'strict'|'agensi'; setup?: 'symlink-outside'; assertions: EvalAssertion[] };
+export type EvalTask = { id: string; input: string; fixture: string; profile?: 'default'|'strict'|'agensi'; format?: 'text'|'json'|'sarif'|'md'; setup?: 'symlink-outside'; assertions: EvalAssertion[] };
 export type EvalResult = { id: string; status: 'pass'|'fail'|'skip'; failures: string[] };
 
 const CORPUS = 'skills/devtools/skill-preflight/evals/evals.json';
@@ -42,7 +42,7 @@ function runTask(task: EvalTask, root: string): EvalResult {
     const profile = task.profile ?? 'default';
     const ctx = loadContext(dir, profile);
     const findings = selectRules(profile).flatMap(r => r.check(ctx));
-    const output = renderReport(buildReport(ctx, findings), 'text');
+    const output = renderReport(buildReport(ctx, findings), task.format ?? 'text');
     const failures: string[] = [];
     for (const a of task.assertions) {
       for (const s of a.contains ?? []) if (!output.includes(s)) failures.push(`missing "${s}"`);
