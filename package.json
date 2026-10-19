@@ -23,7 +23,7 @@
     "catalog": "tsx src/catalog.ts",
     "check:bundle": "npm run build && git diff --exit-code -- skills/devtools/skill-preflight/scripts/preflight.mjs schemas/report.v1.json skills/devtools/skill-preflight/references/rules.md SHA256SUMS",
     "eval": "tsx src/eval.ts",
-    "audit:self": "node skills/devtools/skill-preflight/scripts/preflight.mjs skills/devtools/skill-preflight --profile default --strict --ignore-file skills/devtools/skill-preflight/.preflightignore --format text"
+    "audit:self": "node skills/devtools/skill-preflight/scripts/preflight.mjs skills/devtools/skill-preflight --profile default --strict --ignore-file skills/devtools/skill-preflight/preflightignore.json --format text"
   },
   "dependencies": {
     "yaml": "2.9.1",

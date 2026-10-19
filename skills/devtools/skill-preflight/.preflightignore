@@ -1,7 +1,0 @@
-[
-  {
-    "id": "ST-006",
-    "file": "scripts/preflight.mjs",
-    "reason": "The bundled auditor is a committed, inspectable build of this repository's source code, not an opaque payload."
-  }
-]

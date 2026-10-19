@@ -1,0 +1,12 @@
+[
+  {
+    "id": "ST-006",
+    "file": "scripts/preflight.mjs",
+    "reason": "The bundled auditor is a committed, inspectable build of this repository's source code, not an opaque payload."
+  },
+  {
+    "id": "ST-005",
+    "file": "scripts/preflight.mjs",
+    "reason": "The auditor is invoked as `node scripts/preflight.mjs`, so the executable bit is not required; Windows checkouts cannot carry it."
+  }
+]
