@@ -1,0 +1,3 @@
+* text=auto eol=lf
+scripts/preflight.mjs text eol=lf
+SHA256SUMS text eol=lf
